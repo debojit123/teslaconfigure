@@ -1,7 +1,7 @@
 <nav>
     <button type="button" routerLink="/model" routerLinkActive="active" ariaCurrentWhenActive="page"  id="step1" style="width: 30%;">Step 1</button>
-    <button type="button" routerLink="/config" routerLinkActive="active" ariaCurrentWhenActive="page"  id="step2" style="width: 30%;">Step 2</button>
-    <button type="button" routerLink="/summary" routerLinkActive="active" ariaCurrentWhenActive="page" id="step3" style="width: 30%;">Step 3</button>
+    <button type="button" routerLink="/config" [disabled]="isStep2Disabled" routerLinkActive="active" ariaCurrentWhenActive="page"  id="step2" style="width: 30%;">Step 2</button>
+    <button type="button" routerLink="/summary" [disabled]="isStep3Disabled"  routerLinkActive="active" ariaCurrentWhenActive="page" id="step3" style="width: 30%;">Step 3</button>
   </nav>
   <router-outlet></router-outlet>
   <app-image></app-image>

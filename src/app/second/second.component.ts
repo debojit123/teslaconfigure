@@ -35,6 +35,7 @@ export class SecondComponent {
         this.yoke = data.yoke;
         this.configForm.controls.configSelect.setValue(this.modelService.selectedModelConfig?.id??this.config[0].id);
         this.modelService.selectedModelConfig = this.modelService.selectedModelConfig??this.config[0];
+        this.updateConfig("yes")
       }
     );
     this.configForm.controls.towHitch.setValue(this.modelService.towHitchOpted??false);
@@ -52,6 +53,7 @@ export class SecondComponent {
   onConfigChange(): void {
     if(typeof this.configForm?.get('configSelect')?.value === 'number'){
        this.modelService.selectedModelConfig = this.filterConfig(this.configForm!.get('configSelect')!.value!);
+       this.updateConfig("yes")
     }
   }
 
@@ -76,6 +78,10 @@ export class SecondComponent {
   getPrice(selectedConfigId: number | string): number {
     const selectedConfig = this.config.find(c => c.id === selectedConfigId);
     return selectedConfig ? selectedConfig.price : -1; 
+  }
+
+  updateConfig(config:string) {
+    this.modelService.updateModelConfig(config);
   }
 
 

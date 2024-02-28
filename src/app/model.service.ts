@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { CarModel } from './types/model.type';
 import { ModelColor } from './types/color.type';
@@ -19,6 +19,9 @@ export class ModelService {
   towHitchOpted: boolean = false;
   yokeOpted: boolean = false;
 
+  modelCodeValue: BehaviorSubject<string> = new BehaviorSubject("");
+  modelConfigValue: BehaviorSubject<string> = new BehaviorSubject("");
+
   readonly towHitchPrice: number = 1000;
   readonly yokePrice: number = 1000;
 
@@ -32,5 +35,13 @@ export class ModelService {
 
   get isConfigSelected(): boolean {
     return this.selectedModelConfig? true : false;
+  }
+
+  updateModel(model:string) {
+    this.modelCodeValue.next(model);
+  }
+
+  updateModelConfig(config:string) {
+    this.modelConfigValue.next(config);
   }
 }

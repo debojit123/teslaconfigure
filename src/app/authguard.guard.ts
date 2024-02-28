@@ -6,9 +6,7 @@ export const canActivateSummary: CanActivateFn = (route, state) => {
 
   const modelservice = inject(ModelService);
 
-  return (modelservice.selectedModel ? true : false && 
-  modelservice.selectedModelColor ? true : false && 
-  modelservice.selectedModelConfig ? true : false);
+  return ((modelservice.selectedModel? true : false && modelservice.selectedModelColor? true : false) && modelservice.isConfigSelected);
 
   }
 

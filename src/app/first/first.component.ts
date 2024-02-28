@@ -1,7 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
-import { Router } from '@angular/router';
-import { Subject } from 'rxjs';
+import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { ModelService } from '../model.service';
 import { CommonModule } from '@angular/common';
@@ -51,6 +48,7 @@ export class FirstComponent {
     this.modelService.selectedModel = this.models.find(c => c.code === model);
     this.modelForm.controls.colorSelect.setValue(this.colors[0].code);
     this.modelService.selectedModelColor = this.colors[0];
+    this.modelService.updateModel(model)
   }
 
   onColorChange(): void {
